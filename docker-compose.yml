@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    ports:
+      - 8080:8080
+    container_name: app
+    environment:
+      - db_url=jdbc:postgresql://db:5432/learn_jwt
+      - db_username=postgres
+      - db_password=root
+    depends_on:
+      - db
+    links:
+      - db:db
+  db:
+    image: postgres:13-alpine
+    container_name: pg
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=learn_jwt
+      - POSTGRES_USER=postgres
+    ports:
+      - 5432:5432
+    restart: always
