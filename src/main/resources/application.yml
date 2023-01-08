@@ -19,3 +19,5 @@ server:
     include-message: always
     whitelabel:
       enabled: true
+jwt:
+  secret: 'ZWxzZWZmd2lsc29u'
