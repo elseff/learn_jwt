@@ -47,20 +47,16 @@ public class JwtProvider {
             return true;
         } catch (ExpiredJwtException expEx) {
             log.warn("Token expired");
-            throw new JwtException("Token expired");
         } catch (UnsupportedJwtException unsEx) {
             log.warn("Unsupported jwt");
-            throw new JwtException("Unsupported jwt");
         } catch (MalformedJwtException malEx) {
             log.warn("Malformed jwt");
-            throw new JwtException("Malformed jwt");
         } catch (SignatureException sEx) {
             log.warn("Invalid signature");
-            throw new JwtException("Invalid signature");
         } catch (Exception e) {
             log.warn("invalid token");
-            throw new JwtException("Invalid token");
         }
+        return false;
     }
 
     public String getUsernameFromToken(String token) {
